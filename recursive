@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+	<ul id="myList">
+		<li class="list">1 - List</li>
+		<li class="list">2 - List</li>
+		<li class="list">3 - List</li>
+		<li class="list">4 - List</li>
+		<li class="list">5 - List</li>
+		<li class="list">6 - List</li>
+	</ul>
+	
+</body>
+<script> 
+	var recursive = function(i){
+		let total;
+		if (i > 0) {
+			console.log(i);
+			return 321 + recursive(i--);
+		}
+		else if(i < 0){
+			console.log(i);
+			return recursive(i++) - 321;
+		}
+		else{
+			console.log(i);
+		}
+	}
+	recursive(1);
+</script>
+</html>
+
+
+
+
+
+add 320 to i for "i" times
