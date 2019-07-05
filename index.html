@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script
+  		src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous">
+  	</script>
+  	<script>
+  		$(document).ready(function($) {
+  			
+	  		var myList = [1,2,3,4];
+	  		var myArray = {"one" : 1, "two": 2, "three": 3};
+	  		var classList = {"Arshia" : "Student", "Leo" : "Student", "Javad": "Student", "Mert" : "Instructor"};
+	  		for (i in myList) {
+	  		$("body").append('Index:' + i + ' Value: ' + myList[i] + "<br>");
+	  		}
+	  		for (x in myArray) {
+	  			$("body").append(x + ' => ' + myArray[x] + "<br>");
+	  		}
+
+	  		for (person in classList) {
+	  			$("h3").append(person + ' => ' + classList[person] + "<br>");
+	  		}
+  		});
+  	</script>
+</head>
+<body>
+	<h3>Class List<br></h3>
+</body>
+</html>
