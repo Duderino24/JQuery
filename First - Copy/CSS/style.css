@@ -1,0 +1,38 @@
+li {
+	text-decoration: none;
+	color: white;
+	background-color:  #cc6666;
+	border-radius: 7px;
+	height: auto;
+	padding: 5px;
+	margin: 5px;
+	width: 80%
+}
+
+button {
+	font-size: 20px;
+	padding: 6px;
+	cursor: pointer;
+	background-color:  #99ccff;
+	border-style: none;
+	border-color: #99ccff;
+	color: white;
+	border-radius: 3px;
+	transition: 1s;
+}
+
+button:hover {
+	background-color: #6666ff;
+}
+
+input {
+	border-radius: 5px;
+	padding: 9px;
+}
+
+i {
+	float: right;
+}
+i:hover {
+	cursor: pointer;
+}
