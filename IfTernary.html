@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script
+	src="https://code.jquery.com/jquery-1.12.4.js"integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous">
+</script>
+<script>
+	jQuery(document).ready(function($) {
+		$('button').on('click', function() {
+			console.log( 
+				$(this).attr('name') == 'button_1' ? 
+				(
+					$(this).attr('id') == 'submit' ? 'Submit Clicked!' : "not a real submit" 
+				): 
+				( 
+					$(this).attr('name') == 'button_2' ? 'Clear Clicked!' : 'Somethin Else Clicked!'
+				) 
+				);
+
+		});
+	});
+</script>
+	<title>Script</title>
+</head>
+<body>
+	<h1>Hello, World!</h1>
+
+		<button name="button_1" id="submit">Real Submit</button>
+		<button name="button_1" id="s">Fake Submit</button>
+		<button name="button_2" id="clear">Clear</button>
+		<button name="button_3" id="another">Another</button>
+
+</body>
+
+</html>
