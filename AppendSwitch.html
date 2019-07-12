@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+	<title>Week 2</title>
+</head>
+<script>
+	jQuery(document).ready(function($) {
+		var products = {
+			"New" : "Computer", 
+			"Upcoming" : "Phone", 
+			"Featured" : "TV", 
+			"Discounted" : "Home",
+			"Popular" : "Gaming"}
+
+		var colorPick = (color) => {
+			switch (color) {
+				case "New":
+					return "blue"
+					break;
+				case "Upcoming":
+					return "teal"
+					break;
+				case "Featured":
+					return "red"
+					break;
+				case "Discounted":
+					return "yellow"
+					break;
+				case "Popular":
+					return "green"
+					break;
+			};
+		}
+		$.each(products, function(index, val){
+			$("div#list").append('<div class="item"><a class="ui tag ' + colorPick(index) + ' label">' + index + '</a> ' + ' -' + val + '</div>');
+		});
+});
+
+</script>
+<body>
+	<h1>Products</h1>
+	<br>
+	<div class="ui divided selection list" id="list"></div>
+</body>
+</html>
