@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+	<script src="../js/script.js"></script>
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Calculator</title>
+</head>
+<script>
+	jQuery(document).ready(function($) {
+		$('button.value').on('click', function(x) {
+			$('input').val(($('input').val() + x.target.innerHTML ))
+		});
+		$('button#equal').on('click', function() {
+			$('input').val(eval($('input').val()))
+		});
+		$('button#deleteAll').on('click', function() {
+			$('input').val("");
+		});
+		$('button#delete').on('click', function() {
+			$('input').val($('input').val().slice(0, -1));
+		});
+	});
+</script>
+<body>
+	<main>
+		<input type="text">
+		<div id="keys">
+			<div id="firstRow">
+				<button class="value">7</button>
+				<button class="value">8</button>
+				<button class="value">9</button>
+				<button class="value">+</button>
+				<button id="deleteAll">C</button>
+			</div>
+			<div id="secondRow">
+				<button class="value">4</button>
+				<button class="value">5</button>
+				<button class="value">6</button>
+				<button class="value">-</button>
+				<button id="delete"><--</button>
+			</div>
+			<div id="thirdRow">
+				<button class="value" >1</button>
+				<button class="value" >2</button>
+				<button class="value" >3</button>
+				<button class="value" >*</button>
+				<button class="value" >(</button>
+			</div>
+			<div id="fourthRow">
+				<button class="value">.</button>
+				<button class="value">0</button>
+				<button id="equal">=</button>
+				<button class="value">/</button>
+				<button class="value">)</button>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
