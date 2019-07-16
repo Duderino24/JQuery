@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<title>Week 3</title>
+	<style>
+		p:nth-of-type(2) {
+			display: none
+		}
+
+		.red {
+			color: red;
+		}
+
+		.blue {
+			color: blue;
+		}
+
+		.black {
+			color: black;
+		}
+	</style>
+	<script>
+		$(document).ready( function($) {
+			$("ul").each( function() {
+				$(this).find("li:not(':last')").css("border-bottom" , "1px solid #ff9966");
+				$(this).find("li:even").css({"list-style-type" : "none" , "background" : "#99ffcc" , "color" : "#fff"});
+				$(this).find("li:odd").css({"list-style-type" : "none" , "background" : "#99ddff" , "color" : "#fff"});
+			});
+			$("button").on('click', function(event) {
+				$("p:lang(en-us)").toggle();
+				$("p:lang(es-es)").toggle();
+				$("p").toggleClass(function (event) {
+					if ($(this).hasClass('red')) {
+						$(this).removeClass('red');
+						return 'blue';
+					}
+					if ($(this).hasClass('blue')) {
+						$(this).removeClass('blue');
+						return 'black';
+					}
+					if ($(this).hasClass('black')) {
+						$(this).removeClass('black');
+						return 'red';
+					}
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="ul-wrapper">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<div class="ul-wrapper">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<div class="ul-wrapper">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<div class="ul-wrapper">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<div class="ul-wrapper">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<p lang="en-us">This is english</p>
+	<p lang="es-es">This is supposedly spanish</p>
+	<p class="red">First Paragraph</p>
+	<p class="blue">Second Paragraph</p>
+	<p class="black">Third Paragraph</p>
+	<button>Click!</button>
+</body>
+</html>
