@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script   src="https://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+	<title>Document</title>
+	<script>
+		$(document).ready(function($){
+			var initialz = () => {
+				$('p').each(function(index, el) {
+					$('p[data-id=' + (index + 1) + ']').css('display' , $('p[data-id=' + (index + 1) + ']').attr('display'))
+				});
+			};
+			myParagraphs = "";
+			for (var i = 1; i <= $('p').size(); i++) {
+				myParagraphs += '<option value="'+ i + '">Paragraph ' + i + '</option>'
+			}
+			$('#paragraphSelector').append(myParagraphs);
+
+			$('#paragraphSelector').on('change', function() {
+				$('#displayResult').removeAttr('disabled');
+				$('#displayResult').val( $( 'p[data-id=' + $('#paragraphSelector').val() + ']').attr('display') );
+				$('#displayResult').on('change', function(event) {
+					$( 'p[data-id=' + $('#paragraphSelector').val() + ']').attr('display', $('#displayResult').val()).css('display', $('#displayResult').val());
+				});
+			});
+			initialz();
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<p display = "block" data-id = "1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis corrupti nemo id rerum, delectus, reiciendis quia deserunt quasi, dolor, omnis vero quos sequi possimus at quaerat non doloribus facere officiis.</p>
+		<br>
+		<p display = "none" data-id = "2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae aliquam incidunt, officia explicabo, ipsam laborum nisi rem adipisci voluptatibus magnam, odio. Quibusdam, maxime eaque beatae error recusandae cum veritatis, aliquam.</p>
+		<p display = "block" data-id = "3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis corrupti nemo id rerum, delectus, reiciendis quia deserunt quasi, dolor, omnis vero quos sequi possimus at quaerat non doloribus facere officiis.</p>
+	</div>
+	<div>
+		<select name="paragraphSelector" id="paragraphSelector">
+			<option value="">Select a Value</option>
+		</select>
+
+		<select name="displayResult" id="displayResult" disabled="">
+			<option value="block">Block</option>
+			<option value="none">None</option>
+		</select>
+	</div>
+</body>
+</html>
