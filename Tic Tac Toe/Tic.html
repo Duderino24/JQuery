@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+    <script   src="https://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+  <title>Tic Tac Toe</title>
+  <script>
+   // #e4e4e4
+    jQuery(document).ready(function($) {
+      $('.box').mouseenter(function() {
+        $(this).css('background' , 'red');
+        $('.box').on('click', function(event) {
+          if($(this).attr("visited")){
+            $(this).removeAttr("visited").css('background', 'none');
+          }
+          else{
+            $(this).attr("visited", "true").css("background", "red");
+          }
+        });
+
+
+         })
+        .mouseleave(function() {
+        if ( !$(this).attr('visited') ){ 
+          $(this).css('background', 'none');
+        }
+      });
+
+                $('.box').on('click', function(event) {
+          if($(this).attr("visited")){
+            $(this).removeAttr("visited").css('background', 'none');
+          }
+          else{
+            $(this).attr("visited", "true").css("background", "red");
+          }
+        });
+                
+    });
+
+  </script>
+</head>
+<body>
+  <main>
+    <div class="row">      
+      <div class="box" id="c00"></div>
+      <div class="box" id="c01"></div>
+      <div class="box" id="c02"></div>
+    </div>
+    <div class="row">
+      <div class="box" id="c10"></div>
+      <div class="box" id="c11"></div>
+      <div class="box" id="c12"></div>
+    </div>
+    <div class="row">
+      <div class="box" id="c20"></div>
+      <div class="box" id="c21"></div>
+      <div class="box" id="c22"></div>
+    </div>
+  </main>      
+</body>
+</html>
