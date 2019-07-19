@@ -2,25 +2,51 @@
 	margin: 0; 
 	padding: 0; 
 }
-div { 
-	border-collapse: collapse; 
-	border-spacing: 0; 
+
+#xPlayer {
+	display: block;
+	float: left;
 }
-main {
+
+#oPlayer {
+	display: block;
+	float: right;
+}
+
+#grid {
+	position: static;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 }
 .row {
-	display: flex;
-	
+
+	display: block;
+	margin-bottom: 0px;
 }
 
 .box {
 	display: inline-block;
 	padding: 0px; 
-	margin: 0; 
+	margin: 0px; 
 	width: 200px; 
 	height: 200px; 
 	border: 1px solid #1c1c1c; 
+}
+
+.box:hover {
+	background-color: #e4e4e4;
+}
+
+#completeMove {
+	margin: auto;
+	display: block;
+}
+
+.cross {
+	background-color: red;
+}
+
+.circle {
+	background-color: green;
 }

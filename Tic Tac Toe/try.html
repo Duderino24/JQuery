@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+    <script   src="https://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+  <title>Tic Tac Toe</title>
+  <script>
+    jQuery(document).ready(function($) {
+      var player=1;
+      $('.box').on('click', function() {
+        
+
+        if ($(this).hasClass('cross') || $(this).hasClass('circle')) {
+            $('h1').html('This box is already checked!');
+          } else {
+            $('#completeMove').removeAttr('disabled');
+            // add class
+            var mark = checkForMark(player);
+            function checkForMark (player) {
+              if(player == 1) {
+                return 'cross';
+              } else {
+                return 'circle';
+              }
+            } 
+            $(this).addClass(mark);
+
+            //change turns
+            if /* check if won */( 
+              $('#grid').find('#c00').hasClass(mark) && $('#grid').find('#c01').hasClass(mark) && $('#grid').find('#c02').hasClass(mark) ||
+              $('#grid').find('#c10').hasClass(mark) && $('#grid').find('#c11').hasClass(mark) && $('#grid').find('#c12').hasClass(mark) ||
+              $('#grid').find('#c20').hasClass(mark) && $('#grid').find('#c21').hasClass(mark) && $('#grid').find('#c22').hasClass(mark) ||
+              $('#grid').find('#c00').hasClass(mark) && $('#grid').find('#c10').hasClass(mark) && $('#grid').find('#c20').hasClass(mark) ||
+              $('#grid').find('#c10').hasClass(mark) && $('#grid').find('#c11').hasClass(mark) && $('#grid').find('#c12').hasClass(mark) ||
+              $('#grid').find('#c20').hasClass(mark) && $('#grid').find('#c21').hasClass(mark) && $('#grid').find('#c22').hasClass(mark) ||
+              $('#grid').find('#c00').hasClass(mark) && $('#grid').find('#c11').hasClass(mark) && $('#grid').find('#c22').hasClass(mark) ||
+              $('#grid').find('#c20').hasClass(mark) && $('#grid').find('#c11').hasClass(mark) && $('#grid').find('#c02').hasClass(mark)
+              ) {
+              alert('Player '+ player +' has won.');
+              $('.row div').removeClass('cross').removeClass('circle');
+            } else {
+              if(player == 1) {
+                return player = 2;
+              } else {
+                return player = 1;
+              }
+            }
+          }
+        $('#completeMove').on('click', function() {
+          $(this).attr('disabled');
+        });
+
+        });
+    });
+  </script>
+</head>
+<body>
+  <main>
+    <h1></h1>
+    <div id="xPlayer">
+      <h2>X Player Section</h2>
+      <span id="xMoves"></span>
+      <button class="undoMove">Undo!</button>
+    </div>
+    <div id="oPlayer">
+      <h2>O Player Section</h2>
+      <span id="oMoves"></span>
+      <button class="undoMove">Undo!</button>
+    </div>
+    <div id="grid">
+      <div class="row">      
+        <div class="box" id="c00"></div>
+        <div class="box" id="c01"></div>
+        <div class="box" id="c02"></div>
+      </div>
+      <div class="row">
+        <div class="box" id="c10"></div>
+        <div class="box" id="c11"></div>
+        <div class="box" id="c12"></div>
+      </div>
+      <div class="row">
+        <div class="box" id="c20"></div>
+        <div class="box" id="c21"></div>
+        <div class="box" id="c22"></div>
+      </div>
+    </div>
+    <button id="completeMove" disabled="">Submit Move!</button>
+  </main>      
+</body>
+</html>
