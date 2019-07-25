@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Mert Tan Ajax Tic-Toc-Toe Game</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+    </style>
+	<script>
+        //var player = ["green","red"]; //Players creating
+
+        //var games = [[[],[]],[[],[]]]; //3 Dimensional array, (x,y, player id)
+        //var selected = [[],[]];
+
+        
+
+        $(document).ready(function() {
+        	var players = [
+        	["green", "red", "rgb(27, 188, 155)", "#1BBC9B"],
+        	["red", "green", "rgb(228, 58, 69)", "#E43A45"]
+        ];
+
+        	let cWidth = $(".square").width();
+        	$("#green, #red").css("width", cWidth + "px");
+
+        	//Shuffling function
+        	function shuffle(a) {
+        		var j, x, i;
+        		for (i = a.length - 1; i > 0; i--) {
+        			j = Math.floor(Math.random() * (i + 1));
+        			x = a[i];
+        			a[i] = a[j];
+        			a[j] = x;
+        		}
+        	}
+
+        	var played = ( pl,sq ) => {     		
+        		$('#move').removeAttr('disabled');
+        		$('#' + sq).css('background', pl[3]).attr('by', pl[0]);
+        		let pMoves = sq.split('_');
+        		$('#' + pl[0] + 'undo').show();
+        		$('#' + pl[0] + 'moves ul').append('<li>['+ pMoves[1] + ', ' + pMoves[2] + ']</li>');
+        	}
+        	var undoMove = (x) => {
+        		let myColor = x.split('undo');
+        		let lastMove = $('#' + myColor[0] + 'moves ul li:last-child').text();
+        		$('#' + myColor[0] + 'moves ul li:last').remove();
+        		console.log(lastMove);
+        		$('#box_' + lastMove[1] + '_' + lastMove[4]).removeAttr('by').css('background', 'none');
+        		$('#' + myColor[0] + 'undo').hide();
+        		$('#move').attr('disabled', 'true').css('cursor', 'not-allowed');
+        	}
+
+        	var gamePlay = () => {
+        		$("button#move").attr('disabled', 'true');
+        		$('.undo').hide();
+        		shuffle(players);
+        		let firstPlayer = players[0];
+
+        		$('.square').hover(
+        			function (){
+        				$(this).css('background', firstPlayer[3]);
+        		},
+        			function (){
+        				if (!$(this).attr('by')) {
+        				$(this).css('background', 'none');
+        			}
+        			}
+        		);
+        		$('.square').on('click' , function(event) {
+        			played( firstPlayer, $(this).attr('id'));
+        		});
+
+        		$('.undo').on('click', function(){
+        			undoMove($(this).attr('id'));
+        		});
+        	}
+            
+        	gamePlay();
+        });
+    </script>
+</head>
+<body>
+	<div id="main">
+		<div class="wrapper">
+			<div id="green">
+				<h4>Green Player Section</h4>
+				<span id="greenturn" class="turn">Players Playing</span>
+				<span id="greenmove" class="moves">Moves</span>
+				<span id="greenmoves" class="movelist">
+					<ul>
+						
+					</ul>
+				</span>
+				<span id="greenundo" class="undo"><i class="fa fa-undo"></i>Undo last Move</span>
+			</div>
+			<div id="game">
+				<div id="box_1_1" class="square" ></div>
+				<div id="box_1_2" class="square"></div>
+				<div id="box_1_3" class="square"></div>
+				<div id="box_2_1" class="square"></div>
+				<div id="box_2_2" class="square"></div>
+				<div id="box_2_3" class="square"></div>
+				<div id="box_3_1" class="square"></div>
+				<div id="box_3_2" class="square"></div>
+				<div id="box_3_3" class="square"></div>
+			</div>
+			<div id="red">
+				<h4>Red Player Section</h4>
+				<span id="redturn" class="turn">Players Playing</span>
+				<span id="redmove" class="moves">Moves</span>
+				<span id="redmoves" class="movelist">
+					<ul>
+						
+					</ul>
+				</span>
+				<span id="redundo" class="undo"><i class="fa fa-undo"></i>Undo last move</span>
+			</div>
+				<ul>
+					<button id="move">Move Completed!</button>
+					<button id='rls'>Rules</button>
+				</ul>
+		</div>
+		<div id="rules">
+			<div id="rls">
+				<h3>Game Rules</h3>
+				<ul>
+					<li>Win: If the player has two in a row, they can place a third to get three in a row.</li>
+					<li>Block: If the opponent has two in a row, the player must play the third themselves to block the opponent.</li>
+					<li>Fork: Create an opportunity where the player has two threats to win (two non-blocked lines of 2).</li>
+					<li>Center: A player marks the center. (If it is the first move of the game, playing on a corner gives the second player more opportunities to make a mistake and may therefore be the better choice; however, it makes no difference between perfect players.)</li>
+					<li>Opposite corner: If the opponent is in the corner, the player plays the opposite corner.</li>
+					<li>Empty corner: The player plays in a corner square.</li>
+					<li>Empty side: The player plays in a middle square on any of the 4 sides.</li>
+				</ul>
+			</div>
+			<div id="rrs">
+				<div id="close">
+					<img src="images/close.png" alt="Close the Rules">
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"df4eadcd20","applicationID":"64326232","transactionName":"MwZSNRcAV0AAU01aDgpMZRMMTk1HFR9QXQUBGx4RDRE=","queueTime":0,"applicationTime":0,"atts":"H0FRQ18aRE4=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

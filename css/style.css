@@ -1,0 +1,186 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	background: #E9EdEF;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.wrapper{
+	width: 80%;
+	margin: 0 auto;
+}
+#main{
+	width: 100%;
+	font-family: Arial, sans-serif;
+	line-height: 18px;
+	float: left;
+	margin-top: 70px;
+}
+#main h4{
+	font: 22px/26px Arial;
+	margin: 10px 0 15px 0;
+}
+#green{
+	float: left;
+}
+#main #green span#greenturn{
+	visibility: hidden;
+	float: left;
+	background: #1BBC9B;
+}
+#main .turn{
+	background: #333333;
+	color: #fff;
+	border-radius: 5px;
+	float: left;
+	padding: 7px 10px;
+	margin-top: 7px;
+}
+#main .undo{
+	background: #333333;
+	color: #fff;
+	border-radius: 5px;
+	float: left;
+	padding: 7px 10px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+#main .undo i{
+	float: left;
+	margin-right: 5px;
+	padding-top: 1px;
+}
+#green h4{
+	color: #1BA39C;
+}
+#main #game{
+	width: 606px;
+	float: left;
+}
+#main #game .square{
+	width: 200px;
+	height: 200px;
+	border: 1px solid #333333;
+	float: left;
+	cursor: pointer;
+}
+/*
+#main #game .square:hover{
+	background : rgba(255,255,255,0.5);
+}
+*/
+#main #red{
+	padding-left: 20px;
+	float: left;
+}
+#main #red #redturn{
+	visibility: hidden;
+	background: #E43A45;
+}
+#main #red h4{
+	color: #E43A45;
+}
+#main ul li{
+	font: 18px/24px Arial;
+	margin-top: 5px;
+}
+#main button{
+	width: 100%;
+	font: 16px/20px Arial;
+	background: rgba(255,255,255, 0.8);
+	cursor: pointer;
+	padding: 10px 10px;
+	margin-top: 10px;
+	border: 1px solid #fff;
+	margin-left: 1%;
+}
+#main button#rls{
+	width: 15%;
+}
+#main #rules{
+	visibility: hidden;
+}
+#main #rules h3{
+	font: 28px/32px Arial;
+}
+#main #rules{
+	width: 930px;
+	height: 570px;
+	border-radius: 10px 10px;
+	position: absolute;
+	padding: 15px 15px;
+	left: 50%;
+	top: 50%;
+	margin-top: -300px;
+	margin-left: -480px;
+	background: #fff;
+
+}
+#main #rules #rls {
+	width: 90%;
+	float: left;
+}
+#main #rules #rrs{
+	width: 10%;
+	float: left;
+}
+#main #rules #rrs img{
+	width: 30px;
+	height: 30px;
+	float: right;
+	cursor: pointer;
+}
+#main .moves{
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+}
+#main #greenmove{
+	color: #1BA39C;
+}
+#main #redmove{
+	color: #D91E18;
+}
+#main .movelist{
+	width: 100%;
+	float: left;
+	margin-top: 10px;
+	line-height: 25px;
+}
