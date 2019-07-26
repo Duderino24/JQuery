@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<script 
+		src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous">
+	</script>
+	<script>
+	$(document).ready(function() {
+		$('ul').css('list-style-type', 'none');
+		
+		var xml = $.parseXML("<breakfast_menu><food> <name>Belgian Waffles</name> <price>$5.95</price> <description>Two ofour famous Belgian Waffles with plenty of real maple syrup</description><calories>650</calories> </food> <food> <name>Strawberry BelgianWaffles</name> <price>$7.95</price> <description>Light Belgian waffles coveredwith strawberries and whipped cream</description> <calories>900</calories></food> <food> <name>Berry-Berry Belgian Waffles</name> <price>$8.95</price><description>Light Belgian waffles covered with an assortment of fresh berriesand whipped cream</description><calories>900</calories></food> <food><name>French Toast</name> <price>$4.50</price> <description>Thick slices madefrom our homemade sourdough bread</description> <calories>600</calories></food> <food> <name>Homestyle Breakfast</name> <price>$6.95</price><description>Two eggs, bacon or sausage, toast, and our ever-popular hashbrowns</description> <calories>950</calories> </food> </breakfast_menu>");
+		$xml = $( xml ),
+		$menu = $xml.find('breakfast_menu');
+		$food = $menu.find('food');
+
+		$food.each(function() {
+			$('body').append('<table><tr><td>' + $(this).find('name').text() + '</td><td>' + $(this).find('price').text() + '</td></tr>');
+			$('body').append('<tr><td>' + $(this).find('description').text() + '</td></tr>');
+			$('body').append('<tr><td class="bottom_row">' + $(this).find('calories').text() + '</td></tr></table>');			
+			});
+
+	});
+	</script>
+	
+</head>
+<body>
+	
+</body>
+</html>
