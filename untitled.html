@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script 
+		src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous">
+	</script>
+	<script>
+		$(document).ready(function($) {
+			$.get('../courses.xml', function(data) {
+				var row = '';
+				$(data).find('course').each(function(index, el) {
+					row += '<tr>'
+					row += '<th>' + $(this).find('reg_num').text() + '</th>';
+					row += '<th>' + $(this).find('subj').text() + '</th>';
+					row += '<th>' + $(this).find('crse').text() + '</th>';
+					row += '<th>' + $(this).find('sect').text() + '</th>';
+					row += '<th>' + $(this).find('title').text() + '</th>';
+					row += '<th>' + $(this).find('units').text() + '</th>';
+					row += '<th>' + $(this).find('instructor').text() + '</th>';
+					row += '<th>' + $(this).find('days').text() + '</th>';
+					row += '<th>' + $(this).find('time').text() + '</th>';
+					row += '<th>' + $(this).find('time').find('start_time').text() + ' - ' + $(this).find('time').find('end_time').text() +'</th>';
+					row += '<th>' + $(this).find('place').find('building').text() + ' - ' + $(this).find('place').find('room').text() + '</th>';
+				});
+
+				$('table').append(row)
+			});
+		});
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+</body>
+</html>
