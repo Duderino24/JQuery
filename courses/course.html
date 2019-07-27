@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Francois+One&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<title>Document</title>
+	<script 
+		src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous">
+	</script>
+	<script>
+		$(document).ready(function($) {
+			$.get('courses.xml', function(data) {	
+				var row = '';
+				$(data).find('course').each(function(index, el) {
+					row += '<tr class="data">'
+					row += '<td class="id">' + $(this).find('reg_num').text() + '</td>';
+					row += '<td class="subject">' + $(this).find('subj').text() + '</td>';
+					row += '<td class="course">' + $(this).find('crse').text() + '</td>';
+					row += '<td class="section">' + $(this).find('sect').text() + '</td>';
+					row += '<td class="title">' + $(this).find('title').text() + '</td>';
+					row += '<td class="units">' + $(this).find('units').text() + '</td>';
+					row += '<td class="instructor">' + $(this).find('instructor').text() + '</td>';
+					row += '<td class="days">' + $(this).find('days').text() + '</td>';
+					row += '<td class="time">' + $(this).find('time').find('start_time').text() + ' - ' + $(this).find('time').find('end_time').text() +'</td>';
+					row += '<td class="place">' + $(this).find('place').find('building').text() + ' - ' + $(this).find('place').find('room').text() + '</td>';
+				});
+				var pageCount = Math.ceil( $(data).find('course').length / 10);
+				console.log(pageCount);
+				if (pageCount<7) {
+					for (let i=1; i <= pageCount; i++) {
+						$('#buttons').append('<button id="page_' + i + '">' + i + '</button>');
+					}
+					$('#buttons button:first-of-type').addClass('active').attr('page', 'current');
+				} else {
+					var myPages = "";
+					for (let i=1; i<=3; i++) {
+						myPages += '<button id="page_' + i + '">' + i + '</button>';
+					}
+					myPages += '<button>...</button>';
+
+					for (let i = pageCount-2; i <= pageCount; i++) {
+						myPages += '<button id="page_' + i + '">' + i + '</button>';
+					}
+					$('#buttons').append(myPages);
+					$('#buttons button:first-of-type').addClass('active').attr('page', 'current');					
+				}
+
+				var initialization = () => {
+
+				}
+
+				$('table').append(row);
+				$('.data').hide();
+			});
+		});
+	</script>
+</head>
+<body>
+	<table>
+		<tr id="heading">
+			<th>ID</th>
+			<th>Subject</th>
+			<th>Course</th>
+			<th>Section</th>
+			<th>Title</th>
+			<th>Units</th>
+			<th>Instructor</th>
+			<th>Days</th>
+			<th>Time</th>
+			<th>Place</th>
+		</tr>
+	</table>
+	<div id="buttons">
+	</div>
+</body>
+</html>
