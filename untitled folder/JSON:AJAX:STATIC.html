@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<title>JSON 2</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-flash-1.5.6/b-html5-1.5.6/b-print-1.5.6/datatables.min.js"></script>
+	<script>
+		$(document).ready(function($) {
+			$.ajax({
+				url: 'students.json',
+				dataType: 'JSON',
+				mimeType: 'application/JSON',
+				success: function (response){
+					$(response).each(function(index, el) {
+						el.Gender = el.Gender == 0 ? "Female" : "Male"; 
+					});
+					var jsonData = response;
+				    $('#myTable').dataTable({
+				        data: jsonData,
+				        columns: [
+				            { data: 'ID' },
+				            { data: 'Name' },
+				            { data: 'Class' },
+				            { data: 'Color' },	
+				            { data: 'Eyes' },
+				            { data: 'Gender' },
+				            { data: 'Seat' }
+				        ]
+				    });
+				}
+			});
+		});
+	</script>	
+</head>
+<body>
+	<table id="myTable">
+	    <thead>
+	        <tr>
+	        	<th>ID</th>
+	        	<th>Name</th>
+	        	<th>Class</th>
+	        	<th>Color</th>
+	        	<th>Eyes</th>
+	        	<th>Gender</th>
+	        	<th>Seat</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    </tbody>
+	</table>
+</body>
+</html>
