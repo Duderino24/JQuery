@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>repeater plugin</title>
+</head>
+<script
+  		src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous">
+  	</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.repeater').repeater({
+            defaultValues: {
+                'text-input': 'foo'
+            },
+            show: function () {
+                $(this).slideDown();
+            },
+            hide: function (deleteElement) {
+                $(this).slideUp(deleteElement);
+            }
+        })
+    });
+</script>
+<body>
+<form class="repeater">
+    <div data-repeater-list="group-a">
+      <div data-repeater-item>
+        <input type="text" name="text-input" value="A"/>
+        <input type="text" value="C">
+        <input data-repeater-delete type="button" value="Delete"/>
+      </div>
+    </div>
+    <input data-repeater-create type="button" value="Add"/>
+</form>
+
+</body>
+</html>
