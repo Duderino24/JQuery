@@ -1,0 +1,94 @@
+.box {
+	position: absolute;
+	display: flex;
+	align-content: center;
+}
+svg {
+	position: absolute;
+	display: inline-block;
+	top: 150px;
+	z-index: 0;
+}
+button {
+	text-align: center;
+	margin: auto;
+	position: static;
+	display: inline-block;
+	top: 100px;
+	z-index: 1;
+}
+
+.block {
+	background: #ace600;
+	text-align: center;
+	width: 200px;
+	height: 50px;
+}
+
+#buttons {
+	background: #cccc00;
+	width: 250px;
+	text-align: center;
+}
+
+#buttons button {
+	border: none;
+	background: #cccc00;
+	background: none;
+	-webkit-appearance: none;
+}
+#buttons button:hover {
+	background: #ffffcc;
+}
+
+/* start of code for slidshow */
+main {
+	height: 320px;
+}
+
+#images {
+	position: fixed;
+	width: 700px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px; /* Negative half of height. */
+	margin-left: -350px;
+}
+
+#images img {
+	position: fixed;
+	width: 700px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px; /* Negative half of height. */
+	margin-left: -350px;
+}
+
+#images #right {
+	z-index: 2;
+	position: relative;
+	top: 50%;
+	float: right;
+}
+
+#images #left {
+	z-index: 2;
+	position: relative;
+	top: 50%;
+	float: left;
+}
+
+#circles {
+	position: relative;
+	display: flex;
+	top:  320px;
+	left: 38%;
+
+}
+
+#circles button {
+	display: inline-block;
+	margin: 0;
+}

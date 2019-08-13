@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ball</title>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<script>
+		$(document).ready(function() {
+			var moveRight = () => {
+				$('svg').animate({
+					'margin-left': "+=150px"},
+					150, function() {	
+				});
+			}
+			var moveLeft = () => {
+				$('svg').animate({
+					'margin-left': "-=150px"},
+					150, function() {	
+				});
+			}
+			var moveUp = () => {
+				$('svg').animate({
+					'margin-top': "-=150px"},
+					150, function() {	
+				});
+			}
+			var moveDown = () => {
+				$('svg').animate({
+					'margin-top': "+=150px"},
+					150, function() {	
+				});
+			}
+	
+			$('button#right').on('click', function(event) {
+				moveRight();
+			});
+			$('button#left').on('click', function(event) {
+				moveLeft();
+			});
+			$('button#up').on('click', function(event) {
+				moveUp();
+			});
+			$('button#down').on('click', function(event) {
+				moveDown();
+			});
+			$("body").keydown(function(e) {
+			  e.keyCode == 39 ? moveRight() : e.keyCode == 37 ? moveLeft() : e.keyCode == 38 ? moveUp() : e.keyCode == 40 ? moveDown() : "";
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="box">
+		<svg height="100" width="100">
+		  <circle cx="50" cy="50" r="40" fill="blue" />
+		  Sorry, your browser does not support inline SVG.  
+		</svg> 
+	</div>
+	<button id="up">u</button>
+	<button id="down">d</button>
+	<button id="left">l</button>
+	<button id="right">r</button>
+</body>
+</html>

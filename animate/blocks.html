@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<script>
+		$(document).ready(function() {
+			var increaseSize = ( myDiv ) => {
+				$(myDiv).animate({
+					width: '1000px',
+					height: '100px'},
+					300, function() {
+					/* stuff to do after animation is complete */
+				});	
+			};
+			var reset = () => {
+				$('.block').animate({
+					width: '200px',
+					height: '50px'},
+					300, function() {
+					/* stuff to do after animation is complete */
+				});
+			}
+			$('button').on('click', function(){
+				( $(this).attr("id") == "both" ? increaseSize(".block") : ( $(this).attr("id") != "reset" ? increaseSize( "#block_" + $(this).attr("id") ) : reset() ) );
+			});
+		});
+	</script>
+</head>
+<body>
+	<p id="block_1" class="block">Block 1</p>
+	<p id="block_2" class="block">Block 2</p>
+	<div id="buttons">
+		<button id="1">First</button>
+		<button id="2">Second</button>
+		<button id="both">Both</button>
+		<button id="reset">Reset</button>
+	</div>
+</body>
+</html>
