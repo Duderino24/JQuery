@@ -1,0 +1,70 @@
+body {
+	margin: 10px;
+	background-image: url(email-pattern.png);
+}
+
+.container {
+	margin: 200px;
+}
+
+main p, h1, button {
+	font-family: 'Lexend Tera', sans-serif;
+}
+
+.row {
+	 display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.col-xl-2 {
+	 grid-column: span 2;
+}
+
+#seats {
+	margin-top: -320px; 
+	position: static;
+	height: auto;
+	color: #fff;
+	float: right;
+}
+
+#seats p {
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+	font-family: 'Lexend Mega', sans-serif;
+}
+
+.firstLegend, .firstClass p {
+	background-color: #1E599E;
+}
+
+.ecoLegend, .eco p {
+	background-color: #1A98B8;
+}
+
+.selectedLegend, .selected p {
+	background-color: #4DB3A2;
+}
+
+.bookedLegend, .booked p {
+	background-color: #E35B5A;
+}
+
+#legend {
+	margin-top: 100px;
+}
+
+#legend div {
+	display: block;
+	margin: 20px 0px 20px 0px;
+}
+
+#legend div p {
+	margin: 0px;
+	display: inline-block;
+}
+
+#legend div .empty {
+	padding: 10px;
+}
