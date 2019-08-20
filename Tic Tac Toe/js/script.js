@@ -1,10 +1,27 @@
 //start of jquery
 jQuery(document).ready(function($) {
-    //starting with player Red
+    //starting with player red
     var player = 1;
-
+    $('.box').mouseenter(function(){
+      if ($(this).hasClass('cross') || $(this).hasClass('circle')) {
+        return;
+      } else {
+        if (player == 1) {
+          $(this).css('background', '#FF190D');
+        } else {
+          $(this).css('background', '#4DFF5E');
+        }
+      }
+    });
+    $('.box').mouseleave(function() {
+      if ($(this).hasClass('cross') || $(this).hasClass('circle')) {
+        return;
+      } else {
+        $(this).css('background', 'none');
+      }
+    });
     $('.box').on('click', function() {
-        // if the submit button is disabled change the color based on algroithm, if it is not disabled do nothing 
+        // if the submit button is disabled change the color based on algroithm, if it is not disabled do nothing
         if ($('#completeMove').attr('disabled')) {
 
             //checking if the box is already checked
@@ -14,7 +31,7 @@ jQuery(document).ready(function($) {
                 // making the submit button enabled fo making a move
                 $('#completeMove').removeAttr('disabled');
 
-                //checking for class if player is 1 box should be red if player is 2 box should become green
+                //checking for class if player is 1 box should be #FF190D if player is 2 box should become green
                 var mark = checkForMark(player);
 
                 function checkForMark(player) {
@@ -31,9 +48,9 @@ jQuery(document).ready(function($) {
                 //adding the moves, if function here was for deciding which side of the scren the move should appear
                 var coordinates = '<p class="activeCoordinates">' + $(this).attr('data-id') + '<br> </p>';
                 if (player == 1) {
-                    $('#xPlayer span').append(coordinates)
+                    $('#xPlayer span').append(coordinates);
                 } else if (player == 2) {
-                    $('#oPlayer span').append(coordinates)
+                    $('#oPlayer span').append(coordinates);
                 }
             }
         } else if (!$('#completeMove').attr('disabled')) {
@@ -61,31 +78,47 @@ jQuery(document).ready(function($) {
         //removing the active coordinates class to avoid all coordinates being deleted when pressing undo
         $('p').removeClass('activeCoordinates');
 
+
+        if (player == 1) {
+            $('#xNowPlaying').addClass('hidden');
+            $('#oNowPlaying').removeClass('hidden');
+        } else {
+            $('#xNowPlaying').removeClass('hidden');
+            $('#oNowPlaying').addClass('hidden');
+        }
+
         if /* check if red won */ (
             ($('#grid').find('#c00').is('.cross') && $('#grid').find('#c01').is('.cross') && $('#grid').find('#c02').is('.cross')) ||
             ($('#grid').find('#c10').is('.cross') && $('#grid').find('#c11').is('.cross') && $('#grid').find('#c12').is('.cross')) ||
             ($('#grid').find('#c20').is('.cross') && $('#grid').find('#c21').is('.cross') && $('#grid').find('#c22').is('.cross')) ||
             ($('#grid').find('#c00').is('.cross') && $('#grid').find('#c10').is('.cross') && $('#grid').find('#c20').is('.cross')) ||
-            ($('#grid').find('#c10').is('.cross') && $('#grid').find('#c11').is('.cross') && $('#grid').find('#c12').is('.cross')) ||
-            ($('#grid').find('#c20').is('.cross') && $('#grid').find('#c21').is('.cross') && $('#grid').find('#c22').is('.cross')) ||
+            ($('#grid').find('#c01').is('.cross') && $('#grid').find('#c11').is('.cross') && $('#grid').find('#c12').is('.cross')) ||
+            ($('#grid').find('#c02').is('.cross') && $('#grid').find('#c12').is('.cross') && $('#grid').find('#c22').is('.cross')) ||
             ($('#grid').find('#c00').is('.cross') && $('#grid').find('#c11').is('.cross') && $('#grid').find('#c22').is('.cross')) ||
             ($('#grid').find('#c20').is('.cross') && $('#grid').find('#c11').is('.cross') && $('#grid').find('#c02').is('.cross'))
         ) {
             alert('Player 1 has won.');
-            $('.row div').removeClass('cross').removeClass('circle');
+            $('.row div').removeClass('cross').removeClass('circle').css('background' , 'none');
+            $('span').text('');
+            $('#xNowPlaying').removeClass('hidden');
+            $('#oNowPlaying').addClass('hidden');
+
         } else if /*check if green won*/ (
             ($('#grid').find('#c00').is('.circle') && $('#grid').find('#c01').is('.circle') && $('#grid').find('#c02').is('.circle')) ||
             ($('#grid').find('#c10').is('.circle') && $('#grid').find('#c11').is('.circle') && $('#grid').find('#c12').is('.circle')) ||
             ($('#grid').find('#c20').is('.circle') && $('#grid').find('#c21').is('.circle') && $('#grid').find('#c22').is('.circle')) ||
             ($('#grid').find('#c00').is('.circle') && $('#grid').find('#c10').is('.circle') && $('#grid').find('#c20').is('.circle')) ||
-            ($('#grid').find('#c10').is('.circle') && $('#grid').find('#c11').is('.circle') && $('#grid').find('#c12').is('.circle')) ||
-            ($('#grid').find('#c20').is('.circle') && $('#grid').find('#c21').is('.circle') && $('#grid').find('#c22').is('.circle')) ||
+            ($('#grid').find('#c01').is('.circle') && $('#grid').find('#c11').is('.circle') && $('#grid').find('#c12').is('.circle')) ||
+            ($('#grid').find('#c02').is('.circle') && $('#grid').find('#c12').is('.circle') && $('#grid').find('#c22').is('.circle')) ||
             ($('#grid').find('#c00').is('.circle') && $('#grid').find('#c11').is('.circle') && $('#grid').find('#c22').is('.circle')) ||
             ($('#grid').find('#c20').is('.circle') && $('#grid').find('#c11').is('.circle') && $('#grid').find('#c02').is('.circle'))
         ) {
             alert('Player 2 has won.');
-            $('.row div').removeClass('cross').removeClass('circle');
-            $()
+            $('.row div').removeClass('cross').removeClass('circle').css('background' , 'none');
+            $('span').text('');
+            $('#xNowPlaying').removeClass('hidden');
+            $('#oNowPlaying').addClass('hidden');
+            player = 1;
         } else {
             //change turns
             if (player == 1) {
@@ -97,14 +130,14 @@ jQuery(document).ready(function($) {
     });
     $('.undoMove').on('click', function() {
         //removing color
-        $('.active').removeClass('cross').removeClass('circle');
+        $('.active').removeClass('cross').removeClass('circle').css('background', 'none');
         //making the submit button deactive again
         $('#completeMove').attr('disabled', 'true');
         //removin the coordinates added
         $('.activeCoordinates').remove();
-    }); 
-   
+    });
 
+// function for rules
   $('#myBtn').on('click', function(event) {
     $('#myModal').css('display', 'block');
   });
@@ -114,6 +147,3 @@ jQuery(document).ready(function($) {
 
 });
 //end of jquery
-
-
-

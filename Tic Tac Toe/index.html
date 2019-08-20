@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Finger+Paint&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+  <link rel="stylesheet" href="css/style.css">
     <script   src="https://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
   <title>Tic Tac Toe</title>
@@ -17,16 +17,24 @@
     <br>
     <div id="xPlayer">
       <h2>X Player Section</h2>
+      <button id="xNowPlaying" disabled="">Now Playing!</button>
+      <br>
+      <br>
       <span id="xMoves"></span>
-      <button class="undoMove hidden"><i class="fas fa-undo"></i> Undo!</button>
+      <br>
+      <button class="undoMove hidden"><i class="undo icon"></i>   Undo!</button>
     </div>
     <div id="oPlayer">
       <h2>O Player Section</h2>
+      <button id="oNowPlaying" class="hidden" disabled="">Now Playing!</button>
+      <br><br>
       <span id="oMoves"></span>
-      <button class="undoMove hidden"><i class="fas fa-undo"></i> Undo!</button>
+      <br>
+      <button class="undoMove hidden"><i class="undo icon"></i>  Undo!</button>
     </div>
-    <div id="grid">
-      <div class="row">      
+
+    <div id="grid" class="container">
+      <div class="row">
         <div class="box" id="c00" data-id='[0 , 0]'></div>
         <div class="box" id="c01" data-id='[0 , 1]'></div>
         <div class="box" id="c02" data-id='[0 , 2]'></div>
@@ -43,14 +51,15 @@
       </div>
       <button id="completeMove" disabled="true">Submit Move!</button>
     </div>
-       
 
-      <button id="myBtn">Open Modal</button>
+
+      <button id="myBtn"><i class="file alternate icon"></i>Rules</button>
 
 <div id="myModal" class="modal">
 
   <div class="modal-content">
     <span class="close">&times;</span>
+    <h1>Tic Tac Toe Rules</h1>
     <p>A player can play a perfect game of tic-tac-toe (to win or at least, draw) if each time it is his turn to play, he chooses the first available move from the following list, as used in Newell and Simon's 1972 tic-tac-toe program.[16]
 
 Win: If the player has two in a row, they can place a third to get three in a row.
@@ -77,7 +86,7 @@ If O responds with a corner mark, X is guaranteed to win, by simply taking any o
 If O responds with an edge mark, X is guaranteed to win, by taking center, then O can only take the corner opposite the corner which X plays first. Finally, X can take a corner to create a fork and then X will win on the next move.</p>
   </div>
 
-</div> 
+</div>
   </main>
 </body>
 </html>
