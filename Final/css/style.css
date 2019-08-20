@@ -1,0 +1,124 @@
+body {
+	margin: 10px;
+	background-image: url(../img/email-pattern.png);
+}
+
+.container {
+	position: relative;
+	margin: 10px 400px 100px 400px;
+}
+
+main p, h1, button {
+	font-family: 'Lexend Tera', sans-serif;
+}
+
+#start {
+	display: block;
+	cursor: pointer;
+	border: none;
+	border-radius: 3px;
+	background-color: #67809F;
+	color: #fff;
+	font-size: 50px;
+	-webkit-appearance: none;
+	padding: 10px;
+	font-family: 'Concert One', cursive;
+	margin: auto;
+  	width: 50%;
+  	height: 50%;
+  	transition: 0.5s;
+}
+
+#start:hover {
+		background-color: #62C1DE;
+}
+
+#bookingArea {
+	display: none;
+}
+
+#book, #submit {
+	cursor: pointer;
+	border: none;
+	border-radius: 3px;
+	font-family: 'Fredoka One', cursive;
+	background: #883B5E;
+	color: #fff;
+	font-size: 20px;
+	padding: 5px;
+	transition: 0.5s;
+}
+
+#book:hover, #submit:hover {
+	background-color: #E6969E;
+}
+
+span p {
+	width: 10px;
+}
+
+.row {
+	display: grid;
+  	grid-template-columns: repeat(12, 1fr);
+}
+
+.col-xl-2 {
+	 grid-column: span 2;
+}
+
+#seats {
+	position: absolute;
+	margin-top: -445px;
+	height: auto;
+	color: #fff;
+	right: 0;
+}
+
+#seats p {
+	cursor: pointer;
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	font-family: 'Lexend Mega', sans-serif;
+	font-size: 20px;
+}
+
+#seats div {
+	margin: 10px;
+}
+
+.firstLegend, .firstClass {
+	background-color: #1E599E;
+}
+
+.ecoLegend, .eco {
+	background-color: #1A98B8;
+}
+
+.selectedLegend, .selected {
+	background-color: #4DB3A2 !important;
+}
+
+.bookedLegend, .booked {
+	background-color: #E35B5A !important;
+	cursor: not-allowed !important;
+}
+
+#legend {
+	margin-top: 100px;
+}
+
+#legend div {
+	display: block;
+	margin: 20px 0px 20px 0px;
+}
+
+#legend div p {
+	font-size: 20px;
+	margin: 0px;
+	display: inline-block;
+}
+
+#legend div .empty {
+	padding: 10px;
+}
